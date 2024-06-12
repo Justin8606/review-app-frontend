@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 
 const AddReviews = () => {
@@ -13,7 +14,17 @@ const AddReviews = () => {
         }
     }
     const readValue = ()=>{
-        console.log(data)
+        // console.log(data)
+        axios.post("http://localhost:8080/add",data).then((response)=>{
+            if (response.data.status==="success") {
+                alert("Review Added")
+            } else {
+                alert("An error occured")
+            }
+
+        }).catch((error)=>{
+            alert(error.message)
+        })
     }
   return (
     <div>
