@@ -1,41 +1,21 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ViewReview = () => {
     
-    const [data,changeData] = useState(
-        [
-            {
-                "_id": "6669d8dee519b4d0eca80890",
-                "name": "Aavesham",
-                "year": "2024",
-                "duration": "2.5",
-                "rating": "4.7",
-                "__v": 0
-            },
-            {
-                "_id": "6669d961ba4ff99fe9473068",
-                "name": "varshangalk shesham",
-                "year": "2024",
-                "duration": "2.7",
-                "rating": "4.8",
-                "__v": 0
-            },
-            {
-                "_id": "6669fe44cb272c61ad7e5790",
-                "name": "inception",
-                "year": "2013",
-                "duration": "2",
-                "rating": "5",
-                "__v": 0
+    const [review,changeReview] = useState([])
+
+    const fetchdata = ()=>{
+        axios.post("http://localhost:8080/view").then((response)=>{
+            changeReview(response.data)
+        }).catch(
+            (error)=>{
+                alert(error.message)
             }
-        ]
-    )
-    // const fetchdata = ()=>{
-    //     axios.post("http://localhost:8080/view").then((response)=>{
-            
-    //     })
-    // }
+        ).finally()
+    }
+    
+    useEffect(()=>{fetchdata()},[])
   return (
     <div>
         <div className="container">
@@ -44,7 +24,7 @@ const ViewReview = () => {
 
                     <div className="row g-3">
                     {
-                        data.map(
+                        review.map(
                             (value,index)=>{
                                 return <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
 

@@ -21,7 +21,11 @@ const NavBar = () => {
         </li>
 
         <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to="/">Delete Review</Link>
+          <Link class="nav-link active" aria-current="page" to="/search">Search Review</Link>
+        </li>
+
+        <li class="nav-item">
+          <Link class="nav-link active" aria-current="page" to="/delete">Delete Review</Link>
         </li>
         
         
